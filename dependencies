@@ -1,0 +1,39 @@
+bf.o: bf.cc adaptive_units.hpp graph.hpp graph_int.hpp units.hpp \
+ cunits.hpp sunits.hpp label.hpp shared.hpp utils.hpp
+cli_args.o: cli_args.cc cli_args.hpp connection.hpp graph.hpp \
+ graph_int.hpp units.hpp cunits.hpp sunits.hpp routing.hpp sim.hpp \
+ include/simulation.hpp include/event.hpp include/module.hpp \
+ include/module.hpp utils.hpp
+client.o: client.cc client.hpp connection.hpp graph.hpp graph_int.hpp \
+ units.hpp cunits.hpp sunits.hpp include/module.hpp sim.hpp \
+ include/simulation.hpp include/event.hpp include/module.hpp stats.hpp \
+ cli_args.hpp routing.hpp include/event.hpp traffic.hpp utils.hpp
+connection.o: connection.cc connection.hpp graph.hpp graph_int.hpp \
+ units.hpp cunits.hpp sunits.hpp routing.hpp sim.hpp \
+ include/simulation.hpp include/event.hpp include/module.hpp \
+ include/module.hpp utils.hpp
+ddpp.o: ddpp.cc adaptive_units.hpp cli_args.hpp connection.hpp graph.hpp \
+ graph_int.hpp units.hpp cunits.hpp sunits.hpp routing.hpp sim.hpp \
+ include/simulation.hpp include/event.hpp include/module.hpp \
+ include/module.hpp stats.hpp include/event.hpp traffic.hpp client.hpp \
+ utils.hpp
+gd.o: gd.cc adaptive_units.hpp graph.hpp graph_int.hpp units.hpp \
+ cunits.hpp sunits.hpp label.hpp shared.hpp utils.hpp
+label.o: label.cc label.hpp graph.hpp graph_int.hpp units.hpp cunits.hpp \
+ sunits.hpp
+routing.o: routing.cc routing.hpp graph.hpp graph_int.hpp units.hpp \
+ cunits.hpp sunits.hpp sim.hpp include/simulation.hpp include/event.hpp \
+ include/module.hpp include/module.hpp adaptive_units.hpp bf.hpp gd.hpp \
+ stats.hpp cli_args.hpp connection.hpp include/event.hpp traffic.hpp \
+ client.hpp utils.hpp
+shared.o: shared.cc shared.hpp label.hpp graph.hpp graph_int.hpp \
+ units.hpp cunits.hpp sunits.hpp adaptive_units.hpp utils.hpp
+stats.o: stats.cc client.hpp connection.hpp graph.hpp graph_int.hpp \
+ units.hpp cunits.hpp sunits.hpp include/module.hpp sim.hpp \
+ include/simulation.hpp include/event.hpp include/module.hpp routing.hpp \
+ stats.hpp cli_args.hpp include/event.hpp traffic.hpp utils.hpp
+traffic.o: traffic.cc traffic.hpp client.hpp connection.hpp graph.hpp \
+ graph_int.hpp units.hpp cunits.hpp sunits.hpp include/module.hpp sim.hpp \
+ include/simulation.hpp include/event.hpp include/module.hpp
+utils.o: utils.cc utils.hpp graph.hpp graph_int.hpp units.hpp cunits.hpp \
+ sunits.hpp

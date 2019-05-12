@@ -1,0 +1,5 @@
+generic_test.o: generic_test.cc ../adaptive_units.hpp ../gd.hpp \
+ ../graph.hpp ../graph_int.hpp ../units.hpp ../cunits.hpp ../sunits.hpp \
+ ../graph.hpp ../units.hpp ../utils.hpp
+standard_test.o: standard_test.cc ../graph.hpp ../graph_int.hpp \
+ ../units.hpp ../cunits.hpp ../sunits.hpp ../utils.hpp ../graph.hpp
