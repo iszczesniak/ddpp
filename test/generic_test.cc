@@ -29,8 +29,8 @@ BOOST_AUTO_TEST_CASE(ideas_1)
 {
   // Make sure we've got the modulation model right.
   using au = adaptive_units<COST>;
-  // Set the maximal reach of the spectrally-worse (m = 4) modulation.
-  au::longest_reach(8);
+  // Set the maximal reach of the spectrally-worse (m = 1) modulation.
+  au::set_reach_1(8);
   assert(au::units(1, 0) == 1);
   assert(au::units(1, 1) == 1);
   assert(au::units(1, 2) == 2);
@@ -124,8 +124,8 @@ BOOST_AUTO_TEST_CASE(ideas_1a)
 {
   // Make sure we've got the modulation model right.
   using au = adaptive_units<COST>;
-  // Set the maximal reach of the spectrally-worse (m = 4) modulation.
-  au::longest_reach(8);
+  // Set the maximal reach of the spectrally-worse (m = 1) modulation.
+  au::set_reach_1(8);
   assert(au::units(1, 0) == 1);
   assert(au::units(1, 1) == 1);
   assert(au::units(1, 2) == 2);
@@ -221,8 +221,8 @@ BOOST_AUTO_TEST_CASE(ideas_2)
 {
   // Make sure we've got the modulation model right.
   using au = adaptive_units<COST>;
-  // Set the maximal reach of the spectrally-worse (m = 4) modulation.
-  au::longest_reach(8);
+  // Set the maximal reach of the spectrally-worse (m = 1) modulation.
+  au::set_reach_1(8);
   assert(au::units(1, 0) == 1);
   assert(au::units(1, 1) == 1);
   assert(au::units(1, 2) == 2);
@@ -328,8 +328,8 @@ BOOST_AUTO_TEST_CASE(ideas_3)
 {
   // Make sure we've got the modulation model right.
   using au = adaptive_units<COST>;
-  // Set the maximal reach of the spectrally-worse (m = 4) modulation.
-  au::longest_reach(8);
+  // Set the maximal reach of the spectrally-worse (m = 1) modulation.
+  au::set_reach_1(8);
   assert(au::units(1, 0) == 1);
   assert(au::units(1, 1) == 1);
   assert(au::units(1, 2) == 2);
