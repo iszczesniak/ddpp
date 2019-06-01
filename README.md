@@ -16,4 +16,4 @@ Or you can use git:
 
 ## Author, Affiliation and License
 
-The software was written and is maintained by Ireneusz (Irek) Szcześniak, as part of the responsibilities at the Częstochowa University of Technology. This software is licensed under the Boost Software License 1.0.
+The software was written and is maintained by Ireneusz (Irek) Szcześniak, as part of the responsibilities at the [Częstochowa University of Technology](http://pcz.pl). This software is licensed under the Boost Software License 1.0.
