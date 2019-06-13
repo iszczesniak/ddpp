@@ -1,4 +1,4 @@
-# ddpp
+# The DDPP software
 
 This is the implementation of the efficient and optimal algorithm for
 the dynamic dedicated path protection, which was proposed by Ireneusz
