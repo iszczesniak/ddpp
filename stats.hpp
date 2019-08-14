@@ -52,8 +52,8 @@ class stats: public module<sim>
   // The utilization.
   dbl_acc m_utilization;
 
-  // The probability of establishing a protected connection.
-  dbl_acc m_pec;
+  // The blocking probability.
+  dbl_acc m_bp;
   // The blocked bitrate.
   sum_acc m_bb;
   // The requested bitrate.

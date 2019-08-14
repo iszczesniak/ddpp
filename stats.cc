@@ -40,8 +40,8 @@ stats::~stats()
   // The network utilization.
   output("utilization", ba::mean(m_utilization));
 
-  // The probability of establishing a connection.
-  output("pec", ba::mean(m_pec));
+  // The blocking probability.
+  output("bp", ba::mean(m_bp));
   // The bitrate blocking probability.
   output("bbp", ba::sum(m_bb) / static_cast<double>(ba::sum(m_rb)));
   // The mean cost of an established connection.
@@ -108,7 +108,7 @@ stats::report(const connection &conn)
   if (m_args.kickoff <= now())
     {
       bool status = conn.is_established();
-      m_pec(status);
+      m_bp(!status);
 
       // The requested bitrate.
       auto C = conn.get_demand().second;
