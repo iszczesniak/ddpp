@@ -10,7 +10,7 @@ CXXFLAGS := $(CXXFLAGS) -O2
 # CXXFLAGS := $(CXXFLAGS) -O2 -D NDEBUG
 
 CXXFLAGS := $(CXXFLAGS) -std=c++17
-CXXFLAGS := $(CXXFLAGS) -I include
+CXXFLAGS := $(CXXFLAGS) -I des/include
 
 # Use the C++ linker
 LINK.o = $(LINK.cc)
