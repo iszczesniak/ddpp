@@ -55,6 +55,8 @@ stats::~stats()
       // The mean cost of an established connection.
       output(prefix + "cstec", ba::mean(m_cstec[rt]));
 
+      output(prefix + "mean_time", ba::mean(m_t[rt]));
+      output(prefix + "max_time", ba::max(m_t[rt]));
       output(prefix + "mean_mmwu", ba::mean(m_mmwus[rt]));
       output(prefix + "max_mmwu", ba::max(m_mmwus[rt]));
       output(prefix + "mean_mpqc", ba::mean(m_mpqcs[rt]));
@@ -102,25 +104,6 @@ stats::schedule(const double t)
   module::schedule(t + m_dt);
 }
 
-//   if (m_args.kickoff <= now())
-//     {
-//       bool status = conn.is_established();
-//       m_bp(!status);
-
-//       // The requested bitrate.
-//       auto C = conn.get_demand().second;
-
-//       // Record the requested bitrate.
-//       m_rb(C);
-
-//       if (status)
-//         m_cstec(conn.get_cost());
-//       else
-//         // Record the blocked bitrate.
-//         m_bb(C);
-//     }
-// }
-
 void
 stats::algo_perf(const routing::rt_t rt, const double dt,
                  const int &ncu,
@@ -129,6 +112,18 @@ stats::algo_perf(const routing::rt_t rt, const double dt,
 {
   if (m_args.kickoff <= now())
     {
+      bool status = static_cast<bool>(p.second);
+      m_bp[rt](!status);
+
+      // Record the requested bitrate.
+      m_rb[rt](ncu);
+
+      if (status)
+        m_cstec[rt](get_cost(m_mdl, p.second.value()));
+      else
+        // Record the blocked bitrate.
+        m_bb[rt](ncu);
+
       const int mmwu = p.first[0];
       const int mpqc = p.first[1];
       const int msc = p.first[2];
