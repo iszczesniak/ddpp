@@ -77,8 +77,7 @@ routing::search(graph &g, const demand &d, const CU &cu, rt_t rt)
 {
   using tp_t = chrono::time_point<chrono::high_resolution_clock>;
 
-  tuple<unsigned long, unsigned long, unsigned long, unsigned long,
-        optional<cupp> > p;
+  pair<array<unsigned long, 4>, optional<cupp>> p;
 
   tp_t t0 = std::chrono::system_clock::now();
 
@@ -89,7 +88,8 @@ routing::search(graph &g, const demand &d, const CU &cu, rt_t rt)
       break;
 
     case routing::rt_t::bf:
-      p = tuple(0, 0, 0, 0, bf(g, d, cu));
+      p = make_pair(array<unsigned long, 4>{0, 0, 0, 0},
+                    bf(g, d, cu));
       break;
 
     default:
@@ -99,10 +99,9 @@ routing::search(graph &g, const demand &d, const CU &cu, rt_t rt)
   tp_t t1 = std::chrono::system_clock::now();
   chrono::duration<double> dt = t1 - t0;
 
-  stats::get().algo_perf(rt, dt.count(),
-                         get<0>(p), get<1>(p), get<2>(p), get<3>(p));
+  stats::get().algo_perf(rt, dt.count(), d.second, p);
 
-  return get<4>(p);
+  return p.second;
 }
 
 void

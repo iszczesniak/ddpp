@@ -14,7 +14,7 @@ using namespace std;
 
 client::client(double mht, double mnu, traffic &tra):
   m_htd(1 / mht), m_nud(mnu - 1),
-  conn(m_mdl), st(stats::get()), tra(tra)
+  conn(m_mdl), tra(tra)
 {
   // Try to setup the connection.
   if (set_up())
@@ -48,12 +48,7 @@ bool client::set_up()
   d.second = m_nud(m_rne) + 1;
 
   // Set up the connection.
-  bool status = conn.establish(d);
-
-  // Report the connection.
-  st.report(conn);
-
-  return status;
+  return conn.establish(d);
 }
 
 const connection &

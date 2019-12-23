@@ -11,7 +11,9 @@ class routing: public sim
 public:
   // The routing algorithm:
   // gd - generic Dijkstra
-  enum class rt_t {gd, bf};
+  // bf - brute force
+  // ee - edge exclusion
+  enum class rt_t {gd, bf, ee};
 
   // Return the string of the routing type.
   static std::string

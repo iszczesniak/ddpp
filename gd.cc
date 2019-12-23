@@ -5,6 +5,7 @@
 #include "units.hpp"
 #include "utils.hpp"
 
+#include <array>
 #include <optional>
 #include <queue>
 #include <utility>
@@ -166,8 +167,8 @@ relax(const graph &g, const permanent_t &S, tentative_t &Q,
     }
 }
 
-tuple<unsigned long, unsigned long, unsigned long, unsigned long,
-      std::optional<std::pair<cupath, cupath> > >
+pair<array<unsigned long, 4>,
+     std::optional<std::pair<cupath, cupath>>>
 gd(const graph &g, const demand &d, const CU &cu)
 {
   std::optional<std::pair<cupath, cupath> > result;
@@ -289,5 +290,6 @@ gd(const graph &g, const demand &d, const CU &cu)
           relax(g, S, Q, e, v1, l1, l2, tnsp, pq, ncu, Qc);
     }
 
-  return tuple(mmwu, mpqc, msc, mqc, result);
+  return make_pair(array<unsigned long, 4>{mmwu, mpqc, msc, mqc},
+                   result);
 }

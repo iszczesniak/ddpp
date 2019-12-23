@@ -39,9 +39,6 @@ class client: public module<sim>
   // The traffic object the client belongs to.
   traffic &tra;
   
-  // The statistics object to which we report.
-  stats &st;
-
 public:
   client(double mht, double mnu, traffic &tra);
   
