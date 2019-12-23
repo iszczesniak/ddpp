@@ -137,7 +137,7 @@ stats::algo_perf(const routing::rt_t rt, const double dt,
 {
   if (m_args.kickoff <= now())
     {
-      cerr << routing::to_string(rt) << " " << dt << endl;
+      m_t[rt](dt);
       m_mmwus[rt](mmwu);
       m_mpqcs[rt](mpqc);
       m_mscs[rt](msc);

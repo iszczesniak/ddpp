@@ -61,6 +61,10 @@ class stats: public module<sim>
   // The cost (CU * length) of the established protected connection.
   dbl_acc m_cstec;
 
+  // The time taken by a search.
+  std::map<routing::rt_t, dbl_acc> m_t;
+
+  // The memory usage.
   std::map<routing::rt_t, dbl_acc> m_mmwus;
   std::map<routing::rt_t, dbl_acc> m_mpqcs;
   std::map<routing::rt_t, dbl_acc> m_mscs;
