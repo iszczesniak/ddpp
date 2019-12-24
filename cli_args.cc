@@ -17,7 +17,9 @@
 #define NET_S "net"
 #define ST_S "st"
 #define POPULATION_S "population"
+#define GD_S "gd"
 #define BF_S "bf"
+#define EE_S "ee"
 
 using namespace std;
 namespace po = boost::program_options;
@@ -82,13 +84,39 @@ process_cli_args(int argc, const char *argv[])
       // notified automatically and the program will exit.
       po::notify(vm);
 
+      // The search options.
+      if (vm.count(GD_S))
+        result.gd = true;
+
+      // The search options.
+      if (vm.count(BF_S))
+        result.bf = true;
+
+      // The search options.
+      if (vm.count(EE_S))
+        result.ee = true;
+
+      // Let's check the combinations of the search algorithms.
+      if (!result.gd && !result.ee)
+        {
+          cout << "You have the following search options:\n";
+          cout << "1. --gd to run the generic dijkstra search only\n";
+          cout << "2. --ee to run the edge exclusion search only\n";
+          cout << "3. --gd --ee to run both searches\n\n";
+          cout << "Along with --gd, you can also add --bf to "
+            "corraborate the exactness of the generic Dijkstra "
+            "search with the brute force search.\n\n";
+          cout << "If you use both --gd and --ee, the connection "
+            "will be established with the path found by the "
+            "generic Dijkstra search.";
+          cout.flush();
+          exit(0);
+        }
+
       // The network options.
       result.net = vm[NET_S].as<string>();
 
       result.units = vm["units"].as<int>();
-
-      if (vm.count(BF_S))
-        result.bf = true;
 
       // The traffic options.
       result.ol = vm["ol"].as<double>();
