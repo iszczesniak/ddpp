@@ -45,8 +45,8 @@ public:
   static void
   tear_down(graph &g, const cupp &p);
 
-  // What another routing algorithms to run.
-  static void add_another_algorithm(const rt_t rt);
+  // What a routing algorithm to run.
+  static void add_algorithm(const rt_t rt);
 
 protected:
   // Set up the given cupath.  This process takes the units on the
