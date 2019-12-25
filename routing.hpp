@@ -11,7 +11,9 @@ class routing: public sim
 public:
   // The routing algorithm:
   // gd - generic Dijkstra
-  enum class rt_t {gd, bf};
+  // bf - brute force
+  // ee - edge exclusion
+  enum class rt_t {gd, bf, ee};
 
   // Return the string of the routing type.
   static std::string
@@ -59,8 +61,8 @@ protected:
   static void
   set_up(graph &g, const cupp &p);
 
-  // What another routing algorithms to use.
-  static std::set<rt_t> m_aras;
+  // What routing algorithms to use.
+  static std::set<rt_t> m_algs;
 };
 
 #endif /* ROUTING_HPP */
