@@ -12,14 +12,8 @@ simulate(const cli_args &args_para)
 {
   cli_args args = args_para;
 
-  if (args.gd)
-    routing::add_algorithm(routing::rt_t::gd);
-
   if (args.bf)
-    routing::add_algorithm(routing::rt_t::bf);
-
-  if (args.ee)
-    routing::add_algorithm(routing::rt_t::ee);
+    routing::add_another_algorithm(routing::rt_t::bf);
 
   // Initialize the random number engine of the simulation.
   sim::rne().seed(args.seed);

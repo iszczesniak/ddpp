@@ -152,7 +152,7 @@ routing::to_string(routing::rt_t rt)
 }
 
 void
-routing::add_algorithm(const routing::rt_t rt)
+routing::add_another_algorithm(const routing::rt_t rt)
 {
-  m_algs.insert(rt);
+  m_aras.insert(rt);
 }
