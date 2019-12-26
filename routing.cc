@@ -27,7 +27,7 @@
 using namespace std;
 
 // Another routing algorithms to use.
-set<routing::rt_t> routing::m_aras;
+set<routing::rt_t> routing::m_algs;
 
 optional<cupp>
 routing::set_up(graph &g, const demand &d)
@@ -56,7 +56,7 @@ routing::set_up(graph &g, const demand &d, const CU &cu)
   // The generic Dijkstra result.
   auto dr = search(g, d, cu, rt_t::gd);
 
-  for(const auto ara: m_aras)
+  for(const auto ara: m_algs)
     {
       // Another result.
       auto ar = search(g, d, cu, ara);
@@ -151,7 +151,7 @@ routing::to_string(routing::rt_t rt)
 }
 
 void
-routing::add_another_algorithm(const routing::rt_t rt)
+routing::add_algorithm(const routing::rt_t rt)
 {
-  m_aras.insert(rt);
+  m_algs.insert(rt);
 }
