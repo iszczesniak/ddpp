@@ -7,6 +7,7 @@
 #include "generic_permanent.hpp"
 #include "generic_tentative.hpp"
 #include "generic_tracer.hpp"
+#include "utils.hpp"
 
 #include <optional>
 #include <utility>
@@ -47,7 +48,7 @@ search(const graph &g, const demand &d, const CU &cu)
       // The length of the path found.
       auto dist = get_path_length(g, op.value().second);
       // The path CU.
-      auto &puf = op.value().first;
+      auto &pcu = op.value().first;
 
       // Get the number of units required.
       int units = adaptive_units<COST>::units(ncu, dist);
