@@ -53,23 +53,47 @@ routing::set_up(graph &g, const demand &d, const CU &cu)
 
   assert (src != dst);
 
-  // The generic Dijkstra result.
-  auto dr = search(g, d, cu, rt_t::gd);
+  // The path found to be established.
+  optional<cupp> p;
 
-  for(const auto ara: m_algs)
+  // The algorithms to use.
+  bool gd = m_algs.count(rt_t::gd);
+  bool bf = m_algs.count(rt_t::bf);
+  bool ee = m_algs.count(rt_t::ee);
+
+  if (gd)
     {
-      // Another result.
-      auto ar = search(g, d, cu, ara);
+      // The generic Dijkstra result.
+      p = search(g, d, cu, rt_t::gd);
 
-      if (!(!dr && !ar ||
-            get_cost(g, dr.value()) == get_cost(g, ar.value())))
-        abort();
+      // Corroborate the generic Dijkstra results with the brute force
+      // results.
+      if (bf)
+        {
+          // The brute force result.
+          auto pp = search(g, d, cu, rt_t::bf);
+
+          if (!(!p && !pp ||
+                get_cost(g, p.value()) == get_cost(g, pp.value())))
+            abort();
+        }
+
+      // We run this research only to report performance, we don't use
+      // its results.
+      if (ee)
+        search(g, d, cu, rt_t::ee);
+    }
+  else
+    {
+      assert(ee);
+      // The edge exclusion results.
+      p = search(g, d, cu, rt_t::ee);
     }
 
-  if (dr)
-    set_up(g, dr.value());
+  if (p)
+    set_up(g, p.value());
 
-  return dr;
+  return p;
 }
 
 optional<cupp>
@@ -83,11 +107,11 @@ routing::search(graph &g, const demand &d, const CU &cu, rt_t rt)
 
   switch (rt)
     {
-    case routing::rt_t::gd:
+    case rt_t::gd:
       p = gd(g, d, cu);
       break;
 
-    case routing::rt_t::bf:
+    case rt_t::bf:
       p = make_pair(array<unsigned long, 4>{0, 0, 0, 0},
                     bf(g, d, cu));
       break;
@@ -140,18 +164,18 @@ routing::set_up(graph &g, const cupp &p)
 }
 
 string
-routing::to_string(routing::rt_t rt)
+routing::to_string(rt_t rt)
 {
-  static const map<routing::rt_t, string> t2s
-  {{routing::rt_t::gd, "gd"},
-   {routing::rt_t::bf, "bf"}};
+  static const map<rt_t, string> t2s
+  {{rt_t::gd, "gd"},
+   {rt_t::bf, "bf"}};
   auto i = t2s.find(rt);
   assert(i != t2s.end());
   return i->second;
 }
 
 void
-routing::add_algorithm(const routing::rt_t rt)
+routing::add_algorithm(const rt_t rt)
 {
   m_algs.insert(rt);
 }
