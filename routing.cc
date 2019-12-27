@@ -7,6 +7,7 @@
 
 #include "adaptive_units.hpp"
 #include "bf.hpp"
+#include "ee.hpp"
 #include "gd.hpp"
 #include "graph.hpp"
 #include "stats.hpp"
@@ -114,6 +115,11 @@ routing::search(graph &g, const demand &d, const CU &cu, rt_t rt)
     case rt_t::bf:
       p = make_pair(array<unsigned long, 4>{0, 0, 0, 0},
                     bf(g, d, cu));
+      break;
+
+    case rt_t::ee:
+      p = make_pair(array<unsigned long, 4>{0, 0, 0, 0},
+                    ee(g, d, cu));
       break;
 
     default:

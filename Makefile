@@ -1,8 +1,8 @@
 TARGETS = ddpp
 TARGET_OBJS = $(addsuffix .o, $(TARGETS))
 
-OBJS = bf.o cli_args.o client.o connection.o gd.o label.o routing.o	\
-shared.o stats.o utils.o traffic.o
+OBJS = bf.o cli_args.o client.o connection.o ee.o gd.o label.o	\
+routing.o shared.o stats.o utils.o traffic.o
 
 # CXXFLAGS := $(CXXFLAGS) -g
 # CXXFLAGS := $(CXXFLAGS) -pg --no-pie
