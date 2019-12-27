@@ -42,6 +42,20 @@ search(const graph &g, const demand &d, const CU &cu)
   // Get the path.
   auto op = trace(P, dst, l, t);
 
+  if (op)
+    {
+      // The length of the path found.
+      auto dist = get_path_length(g, op.value().second);
+      // The path CU.
+      auto &puf = op.value().first;
+
+      // Get the number of units required.
+      int units = adaptive_units<COST>::units(ncu, dist);
+
+      // First-fit spectrum allocation policy.
+      pcu = CU(pcu.min(), pcu.min() + units);
+    }
+
   return op;
 }
 
