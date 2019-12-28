@@ -174,7 +174,8 @@ routing::to_string(rt_t rt)
 {
   static const map<rt_t, string> t2s
   {{rt_t::gd, "gd"},
-   {rt_t::bf, "bf"}};
+   {rt_t::bf, "bf"},
+   {rt_t::ee, "ee"}};
   auto i = t2s.find(rt);
   assert(i != t2s.end());
   return i->second;
