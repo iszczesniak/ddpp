@@ -69,16 +69,18 @@ ee(const graph &g, const demand &d, const CU &cu)
 {
   std::optional<std::pair<cupath, cupath> > result;
 
-  // We have to run the algorithm twice: first without filtering, then
-  // with filtering.
+  // We have to run the algorithm twice: first without filtering,
+  // second with filtering.
   auto first = search(g, d, cu);
 
   if (first)
     {
+      const auto &p1 = first.value();
+
       // Excluded edges.
       set<edge> ee;
 
-      for(const auto &e: first.value().second)
+      for(const auto &e: p1.second)
         ee.insert(e);
 
       // The filtered graph type.
@@ -91,7 +93,20 @@ ee(const graph &g, const demand &d, const CU &cu)
       auto second = search(fg, d, cu);
 
       if (second)
-        return make_pair(first.value(), second.value());
+        {
+          const auto &p2 = second.value();
+
+          // Let's make sure that the first path is not of a greater
+          // cost than the second path.
+          assert(get_cost(g, p1) <= get_cost(g, p2));
+
+          // Let's make sure that the two paths have no mutual edges.
+          for(const auto &e1: p1.second)
+            for(const auto &e2: p2.second)
+              assert(e1 != e2);
+
+          return make_pair(p1, p2);
+        }
     }
 
   return {};
