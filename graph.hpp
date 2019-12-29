@@ -64,4 +64,10 @@ typedef std::pair<vertex, vertex> npair;
 // The demand type: npair and the number of contiguous units (ncu).
 typedef std::pair<npair, int> demand;
 
+template <typename Graph>
+using Vertex = typename Graph::vertex_descriptor;
+
+template <typename Graph>
+using Edge = typename Graph::edge_descriptor;
+
 #endif /* GRAPH_HPP */

@@ -1,8 +1,8 @@
 TARGETS = ddpp
 TARGET_OBJS = $(addsuffix .o, $(TARGETS))
 
-OBJS = bf.o cli_args.o client.o connection.o gd.o label.o routing.o	\
-shared.o stats.o utils.o traffic.o
+OBJS = bf.o cli_args.o client.o connection.o ee.o gd.o label.o	\
+routing.o shared.o stats.o utils.o traffic.o
 
 # CXXFLAGS := $(CXXFLAGS) -g
 # CXXFLAGS := $(CXXFLAGS) -pg --no-pie
@@ -10,7 +10,11 @@ CXXFLAGS := $(CXXFLAGS) -O2
 # CXXFLAGS := $(CXXFLAGS) -O2 -D NDEBUG
 
 CXXFLAGS := $(CXXFLAGS) -std=c++17
+CXXFLAGS := $(CXXFLAGS) -I .
 CXXFLAGS := $(CXXFLAGS) -I des/include
+CXXFLAGS := $(CXXFLAGS) -I dijkstra
+CXXFLAGS := $(CXXFLAGS) -I generic_dijkstra
+CXXFLAGS := $(CXXFLAGS) -I standard_dijkstra
 
 # Use the C++ linker
 LINK.o = $(LINK.cc)

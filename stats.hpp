@@ -46,21 +46,23 @@ class stats: public module<sim>
 
   typedef ba::accumulator_set<long, ba::features<ba::tag::sum>> sum_acc;
 
-  // The number of rejected requests.
-  int m_rejected = 0;
-
   // The utilization.
   dbl_acc m_utilization;
 
   // The blocking probability.
-  dbl_acc m_bp;
+  std::map<routing::rt_t, dbl_acc> m_bp;
   // The blocked bitrate.
-  sum_acc m_bb;
+  std::map<routing::rt_t, sum_acc> m_bb;
   // The requested bitrate.
-  sum_acc m_rb;
-  // The cost (CU * length) of the established protected connection.
-  dbl_acc m_cstec;
+  std::map<routing::rt_t, sum_acc> m_rb;
 
+  // The cost (CU * length) of the established protected connection.
+  std::map<routing::rt_t, dbl_acc> m_cstec;
+
+  // The time taken by a search.
+  std::map<routing::rt_t, dbl_acc> m_t;
+
+  // The memory usage.
   std::map<routing::rt_t, dbl_acc> m_mmwus;
   std::map<routing::rt_t, dbl_acc> m_mpqcs;
   std::map<routing::rt_t, dbl_acc> m_mscs;
@@ -87,14 +89,12 @@ public:
   void
   operator()(const double t);
 
-  // Report the connection.
-  void
-  report(const connection &conn);
-
   // Report the algorithm performance.
   void
-  algo_perf(const routing::rt_t rt, const double dt, const int mmwu,
-            const int max_pqen, const int max_Sc, const int max_Qc);
+  algo_perf(const routing::rt_t rt, const double dt,
+            const int &ncu,
+            const std::pair<std::array<unsigned long, 4>,
+                            std::optional<cupp>> &p);
 
 private:
   // Calculate the average number of fragments on a link.

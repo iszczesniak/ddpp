@@ -14,7 +14,7 @@
 struct cli_args
 {
   /// -----------------------------------------------------------------
-  /// The network options
+  /// The network and routing options
   /// -----------------------------------------------------------------
   
   /// The network file name.
@@ -23,8 +23,14 @@ struct cli_args
   /// The number of units.
   int units;
 
+  // Use the generic Dijkstra search.
+  bool gd = false;
+
   // Use the brute force search.
   bool bf = false;
+
+  // Use the edge exclusion search.
+  bool ee = false;
 
   /// -----------------------------------------------------------------
   /// The traffic options

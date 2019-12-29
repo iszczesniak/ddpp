@@ -11,7 +11,9 @@ class routing: public sim
 public:
   // The routing algorithm:
   // gd - generic Dijkstra
-  enum class rt_t {gd, bf};
+  // bf - brute force
+  // ee - edge exclusion
+  enum class rt_t {gd, bf, ee};
 
   // Return the string of the routing type.
   static std::string
@@ -43,8 +45,8 @@ public:
   static void
   tear_down(graph &g, const cupp &p);
 
-  // What another routing algorithms to run.
-  static void add_another_algorithm(const rt_t rt);
+  // What a routing algorithm to run.
+  static void add_algorithm(const rt_t rt);
 
 protected:
   // Set up the given cupath.  This process takes the units on the
@@ -59,8 +61,8 @@ protected:
   static void
   set_up(graph &g, const cupp &p);
 
-  // What another routing algorithms to use.
-  static std::set<rt_t> m_aras;
+  // What routing algorithms to use.
+  static std::set<rt_t> m_algs;
 };
 
 #endif /* ROUTING_HPP */

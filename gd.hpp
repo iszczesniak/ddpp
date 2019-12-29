@@ -4,12 +4,12 @@
 #include "graph.hpp"
 #include "units.hpp"
 
+#include <array>
 #include <optional>
-#include <tuple>
 #include <utility>
 
-std::tuple<unsigned long, unsigned long, unsigned long, unsigned long,
-           std::optional<std::pair<cupath, cupath> > >
+std::pair<std::array<unsigned long, 4>,
+          std::optional<std::pair<cupath, cupath>>>
 gd(const graph &g, const demand &d, const CU &cu);
 
 #endif // GD_HPP
