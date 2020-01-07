@@ -62,6 +62,9 @@ class stats: public module<sim>
   // The time taken by a search.
   std::map<routing::rt_t, dbl_acc> m_t;
 
+  // The number of searches.
+  std::map<routing::rt_t, unsigned> m_searches;
+  
   // The memory usage.
   std::map<routing::rt_t, dbl_acc> m_mmwus;
   std::map<routing::rt_t, dbl_acc> m_mpqcs;

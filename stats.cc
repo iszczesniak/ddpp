@@ -47,6 +47,9 @@ stats::~stats()
       auto rt = e.first;
       const string prefix = routing::to_string(rt) + '_';
 
+      // The number of searches.
+      output(prefix + "searches", m_searches[rt]);
+      
       // The blocking probability.
       output(prefix + "bp", ba::mean(m_bp[rt]));
       // The bitrate blocking probability.
@@ -112,6 +115,8 @@ stats::algo_perf(const routing::rt_t rt, const double dt,
 {
   if (m_args.kickoff <= now())
     {
+      ++m_searches[rt];
+
       bool status = static_cast<bool>(p.second);
       m_bp[rt](!status);
 
