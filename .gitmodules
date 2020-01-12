@@ -4,9 +4,6 @@
 [submodule "generic_dijkstra"]
 	path = generic_dijkstra
 	url = https://github.com/iszczesniak/generic_dijkstra
-[submodule "standard_dijkstra"]
-	path = standard_dijkstra
-	url = https://github.com/iszczesniak/standard_dijkstra
 [submodule "dijkstra"]
 	path = dijkstra
 	url = https://github.com/iszczesniak/dijkstra
