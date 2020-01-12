@@ -14,7 +14,6 @@ CXXFLAGS := $(CXXFLAGS) -I .
 CXXFLAGS := $(CXXFLAGS) -I des/include
 CXXFLAGS := $(CXXFLAGS) -I dijkstra
 CXXFLAGS := $(CXXFLAGS) -I generic_dijkstra
-CXXFLAGS := $(CXXFLAGS) -I standard_dijkstra
 
 # Use the C++ linker
 LINK.o = $(LINK.cc)
