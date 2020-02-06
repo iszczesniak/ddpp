@@ -11,7 +11,7 @@ CXXFLAGS := $(CXXFLAGS) -O2
 
 CXXFLAGS := $(CXXFLAGS) -std=c++17
 CXXFLAGS := $(CXXFLAGS) -I .
-CXXFLAGS := $(CXXFLAGS) -I des/include
+CXXFLAGS := $(CXXFLAGS) -I des
 CXXFLAGS := $(CXXFLAGS) -I dijkstra
 CXXFLAGS := $(CXXFLAGS) -I generic_dijkstra
 
