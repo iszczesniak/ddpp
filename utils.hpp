@@ -26,7 +26,8 @@ namespace ba = boost::accumulators;
 typedef ba::accumulator_set<double, ba::stats<ba::tag::min,
                                               ba::tag::mean,
                                               ba::tag::max,
-                                              ba::tag::variance> > dbl_acc;
+                                              ba::tag::variance> >
+dbl_acc;
 
 /**
  * Generate a random number from min to max, including both min and
@@ -47,14 +48,14 @@ get_path_length(const Graph &g, const Container &con)
 {
   using ew = boost::edge_weight_t;
   using w = typename boost::property_map<Graph, ew>::value_type;
-  using edge = typename Graph::edge_descriptor;
 
-  w c = std::accumulate(con.begin(), con.end(), w(),
-                        [g](const w &c, const edge &e)
-                        {
-                          w o = boost::get(boost::edge_weight, g, e);
-                          return c + o;
-                        });
+  auto c = std::accumulate(con.begin(), con.end(), w{},
+                           [g](const auto &c, const auto &e)
+                           {
+                             auto o = boost::get(boost::edge_weight,
+                                                 g, e);
+                             return c + o;
+                           });
   return c;
 }
 
