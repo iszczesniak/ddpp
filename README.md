@@ -4,7 +4,7 @@ This is the implementation of the efficient and optimal algorithm for
 the dynamic dedicated path protection, which was proposed in:
 
 Ireneusz Szcześniak, Ireneusz Olszewski, and Bożena Woźna-Szcześniak
-in "The efficient and optimal algorithm for the dynamic dedicated path
+in "An efficient and exact algorithm for the dynamic dedicated path
 protection", submitted for publication
 
 <https://arxiv.org/abs/1905.04581>
