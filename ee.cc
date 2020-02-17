@@ -40,8 +40,23 @@ search(const Graph &g, const demand &d, const CU &cu)
   generic_label<Graph, COST, CU> l(0, CU(cu), edge(), src);
   // The creator of the labels.
   generic_label_creator<Graph, COST, CU> c(g, ncu);
-  // Run the search.
-  dijkstra(g, P, T, l, c, dst);
+
+  try
+    {
+      auto visit = [dst](const auto &l)
+                   {
+                     if (dst == get_target(l))
+                       throw true;
+                   };
+
+      // Run the search.
+      dijkstra(g, l, P, T, c, visit);
+    }
+  catch (bool status)
+    {
+      assert(status);
+    }
+
   // The tracer.
   generic_tracer<Graph, cupath, per_type, CU> t(g, ncu);
   // Get the path.

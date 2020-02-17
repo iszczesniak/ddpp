@@ -9,7 +9,8 @@ routing.o shared.o stats.o utils.o traffic.o
 CXXFLAGS := $(CXXFLAGS) -O2
 # CXXFLAGS := $(CXXFLAGS) -O2 -D NDEBUG
 
-CXXFLAGS := $(CXXFLAGS) -std=c++17
+CXXFLAGS := $(CXXFLAGS) -fconcepts
+CXXFLAGS := $(CXXFLAGS) -std=c++2a
 CXXFLAGS := $(CXXFLAGS) -I .
 CXXFLAGS := $(CXXFLAGS) -I des
 CXXFLAGS := $(CXXFLAGS) -I dijkstra
