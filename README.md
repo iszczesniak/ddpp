@@ -1,7 +1,7 @@
 # The DDPP software
 
-This is the implementation of the efficient and optimal algorithm for
-the dynamic dedicated path protection, which was proposed in:
+This is the implementation of an efficient and exact algorithm for the
+dynamic dedicated path protection, which was proposed in:
 
 Ireneusz Szcześniak, Ireneusz Olszewski, and Bożena Woźna-Szcześniak
 in "An efficient and exact algorithm for the dynamic dedicated path
