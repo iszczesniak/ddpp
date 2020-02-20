@@ -41,21 +41,8 @@ search(const Graph &g, const demand &d, const CU &cu)
   // The creator of the labels.
   generic_constrained_label_creator<Graph, COST, CU> c(g, ncu);
 
-  try
-    {
-      auto visit = [dst](const auto &l)
-                   {
-                     if (dst == get_target(l))
-                       throw true;
-                   };
-
-      // Run the search.
-      dijkstra(g, l, P, T, c, visit);
-    }
-  catch (bool status)
-    {
-      assert(status);
-    }
+  // Run the search.
+  dijkstra(g, l, P, T, c, dst);
 
   // The tracer.
   generic_tracer<Graph, cupath, per_type, CU> t(g, ncu);
