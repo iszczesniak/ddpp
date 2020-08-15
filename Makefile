@@ -42,7 +42,7 @@ clean:
 	rm -f $(TARGETS)
 
 count:
-	wc -l *.hpp *.cc
+	wc -l *.hpp *.cc */*.hpp
 
 depend:
 	g++ $(CXXFLAGS) -MM *.cc > dependencies
