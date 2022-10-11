@@ -3,11 +3,11 @@
 This is the implementation of an efficient and exact algorithm for the
 dynamic dedicated path protection, which was proposed in:
 
-Ireneusz Szcześniak, Ireneusz Olszewski, and Bożena Woźna-Szcześniak
-in "An efficient and exact algorithm for the dynamic dedicated path
-protection", submitted for publication
+**Ireneusz Szcześniak**, Ireneusz Olszewski, Bożena Woźna-Szcześniak,
+"Towards an efficient and exact algorithm for dynamic dedicated path
+protection", *Entropy*, 23(9), paper 1116, August, 2021
 
-<https://arxiv.org/abs/1905.04581>
+<https://doi.org/10.3390/e23091116>
 
 ## Download
 
