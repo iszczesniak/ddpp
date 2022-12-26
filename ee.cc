@@ -4,11 +4,11 @@
 
 #include "adaptive_units.hpp"
 #include "generic_dijkstra.hpp"
-#include "generic_constrained_label_creator.hpp"
 #include "generic_label.hpp"
 #include "generic_permanent.hpp"
 #include "generic_tentative.hpp"
 #include "generic_tracer.hpp"
+#include "label_creator.hpp"
 #include "utils.hpp"
 
 #include <optional>
@@ -39,7 +39,7 @@ search(const Graph &g, const demand &d, const CU &cu)
   // The label we start the search with.
   generic_label<Graph, COST, CU> l(0, CU(cu), edge(), src);
   // The creator of the labels.
-  generic_constrained_label_creator<Graph, COST, CU> c(g, ncu);
+  label_creator<COST> c(ncu);
 
   // Run the search.
   dijkstra(g, l, P, T, c, dst);

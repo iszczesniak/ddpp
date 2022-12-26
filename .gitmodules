@@ -7,3 +7,9 @@
 [submodule "dijkstra"]
 	path = dijkstra
 	url = https://github.com/iszczesniak/dijkstra
+[submodule "graph"]
+	path = graph
+	url = https://github.com/iszczesniak/graph2
+[submodule "units"]
+	path = units
+	url = https://github.com/iszczesniak/units

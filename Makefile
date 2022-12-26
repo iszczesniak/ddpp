@@ -15,6 +15,7 @@ CXXFLAGS := $(CXXFLAGS) -I .
 CXXFLAGS := $(CXXFLAGS) -I des
 CXXFLAGS := $(CXXFLAGS) -I dijkstra
 CXXFLAGS := $(CXXFLAGS) -I generic_dijkstra
+CXXFLAGS := $(CXXFLAGS) -I graph
 
 # Use the C++ linker
 LINK.o = $(LINK.cc)
@@ -24,7 +25,6 @@ ifdef BOOST_ROOT
 	LDFLAGS := $(LDFLAGS) -L $(BOOST_ROOT)/lib
 endif
 
-LDFLAGS := $(LDFLAGS) -l boost_graph
 LDFLAGS := $(LDFLAGS) -l boost_program_options
 LDFLAGS := $(LDFLAGS) -l boost_system
 LDFLAGS := $(LDFLAGS) -l boost_timer
